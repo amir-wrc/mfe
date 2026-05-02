@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { loadRemoteModule } from '@angular-architects/module-federation-runtime';
 
 @NgModule({
   declarations: [
@@ -11,12 +10,7 @@ import { loadRemoteModule } from '@angular-architects/module-federation-runtime'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    loadRemoteModule({
-      remoteName: 'shellApp',
-      exposedModule: './SharedServices',
-      remoteEntry: 'http://localhost:4200/remoteEntry.js'
-    }).then(m => m.SharedServicesModule)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

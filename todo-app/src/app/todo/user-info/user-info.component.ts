@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'sharedSer';
 
 interface UserData {
   username: string;
@@ -103,14 +102,12 @@ interface UserData {
 export class UserInfoComponent implements OnInit {
   userData: UserData | null = null;
 
-  constructor(private authService: AuthService) {}
-
   ngOnInit(): void {
     // Get user data from window object (shared by shell app)
     this.userData = (window as any).shellUserData || null;
     
     // Log for debugging
-    console.log('Todo App - Received user data:', this.userData, this.authService.getToken());
+    console.log('Todo App - Received user data:', this.userData);
   }
 }
 
