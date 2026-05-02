@@ -1,0 +1,28 @@
+<div class="products-container">
+  <!-- User Info Banner -->
+  <app-user-info></app-user-info>
+
+  <div class="products-header">
+    <h2>🛍️ Product Catalog</h2>
+    <p class="subtitle">Browse our amazing products</p>
+    <div class="cart-badge" *ngIf="cartItemCount > 0">
+      Cart: {{ cartItemCount }} items
+    </div>
+  </div>
+
+  <div class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="product-image">{{ product.image }}</div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="product-footer">
+          <span class="product-price">${{ product.price.toFixed(2) }}</span>
+          <button (click)="addToCart(product)" class="add-to-cart-btn">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

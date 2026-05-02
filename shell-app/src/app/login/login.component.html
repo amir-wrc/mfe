@@ -1,0 +1,35 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Microfrontend Application</h2>
+    <h3>Login</h3>
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input 
+          type="text" 
+          id="username" 
+          [(ngModel)]="username" 
+          name="username" 
+          placeholder="Enter username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          placeholder="Enter password"
+          required
+        />
+      </div>
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    <p class="hint">Hint: Enter any username and password to login</p>
+  </div>
+</div>

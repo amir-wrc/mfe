@@ -1,0 +1,69 @@
+<div class="todo-container">
+  <!-- User Info Banner -->
+  <app-user-info></app-user-info>
+
+  <div class="todo-header">
+    <h2>📝 Todo Application</h2>
+    <p class="subtitle">Manage your tasks efficiently</p>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <div class="stat-card">
+      <span class="stat-number">{{ todos.length }}</span>
+      <span class="stat-label">Total Tasks</span>
+    </div>
+    <div class="stat-card active">
+      <span class="stat-number">{{ activeTodosCount }}</span>
+      <span class="stat-label">Active</span>
+    </div>
+    <div class="stat-card completed">
+      <span class="stat-number">{{ completedTodosCount }}</span>
+      <span class="stat-label">Completed</span>
+    </div>
+  </div>
+
+  <!-- Add Todo Section -->
+  <div class="add-todo-section">
+    <input 
+      type="text" 
+      [(ngModel)]="newTodoTitle" 
+      (keyup.enter)="addTodo()"
+      placeholder="What needs to be done?"
+      class="todo-input"
+    />
+    <button (click)="addTodo()" class="add-btn">Add Task</button>
+  </div>
+
+  <!-- Filter Info -->
+  <div class="filter-info">
+    <span *ngIf="filter === 'all'">Showing all tasks</span>
+    <span *ngIf="filter === 'active'">Showing active tasks</span>
+    <span *ngIf="filter === 'completed'">Showing completed tasks</span>
+  </div>
+
+  <!-- Todo List -->
+  <div class="todo-list">
+    <div *ngIf="filteredTodos.length === 0" class="empty-state">
+      <p>No tasks found</p>
+      <p class="empty-hint">Add a new task to get started!</p>
+    </div>
+
+    <div 
+      *ngFor="let todo of filteredTodos" 
+      class="todo-item"
+      [class.completed]="todo.completed"
+    >
+      <div class="todo-content">
+        <input 
+          type="checkbox" 
+          [checked]="todo.completed"
+          (change)="toggleTodo(todo)"
+          class="todo-checkbox"
+        />
+        <span class="todo-title">{{ todo.title }}</span>
+      </div>
+      <button (click)="deleteTodo(todo.id)" class="delete-btn">🗑️</button>
+    </div>
+  </div>
+</div>

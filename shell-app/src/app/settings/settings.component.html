@@ -1,0 +1,118 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <h2>⚙️ Settings</h2>
+  </div>
+  
+  <div class="settings-content">
+    <div class="settings-section">
+      <h3>Account Settings</h3>
+      <div class="settings-card">
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Email Notifications</label>
+            <p>Receive email updates about your activities</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="emailNotifications">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Push Notifications</label>
+            <p>Get push notifications for important updates</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="pushNotifications">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Two-Factor Authentication</label>
+            <p>Add an extra layer of security to your account</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="twoFactorAuth">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="settings-section">
+      <h3>Application Preferences</h3>
+      <div class="settings-card">
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Dark Mode</label>
+            <p>Switch to dark theme</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="darkMode">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Auto-save</label>
+            <p>Automatically save your work</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="autoSave">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Language</label>
+            <p>Choose your preferred language</p>
+          </div>
+          <select [(ngModel)]="language" class="language-select">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="settings-section">
+      <h3>Privacy & Security</h3>
+      <div class="settings-card">
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Profile Visibility</label>
+            <p>Control who can see your profile</p>
+          </div>
+          <select [(ngModel)]="profileVisibility" class="language-select">
+            <option value="public">Public</option>
+            <option value="friends">Friends Only</option>
+            <option value="private">Private</option>
+          </select>
+        </div>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <label>Activity Status</label>
+            <p>Show when you're active</p>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="activityStatus">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="settings-actions">
+      <button class="btn-save" (click)="saveSettings()">Save Changes</button>
+      <button class="btn-reset" (click)="resetSettings()">Reset to Default</button>
+    </div>
+  </div>
+</div>

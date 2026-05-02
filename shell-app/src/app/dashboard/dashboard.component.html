@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>Microfrontend Dashboard</h1>
+    </div>
+    <div class="header-center">
+      <div class="app-tiles">
+        <div
+          *ngFor="let app of remoteApps"
+          class="app-tile"
+          [class.active]="selectedApp === app.name"
+          [style.border-color]="app.color"
+          (click)="selectApp(app.name)"
+          [title]="'Click to load ' + app.title"
+        >
+          <div class="tile-icon" [style.background-color]="app.color">
+            {{ app.icon }}
+          </div>
+          <span class="tile-label">{{ app.title }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="username">Welcome, {{ username }}</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <h3>Menu</h3>
+        <ul>
+          <li *ngFor="let item of currentMenuItems" class="menu-item">
+            <a [routerLink]="item.route" routerLinkActive="active">
+              <span class="menu-icon">{{ item.icon }}</span>
+              <span class="menu-label">{{ item.label }}</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="content-area">
+      <div class="content-wrapper">
+        <!-- Router Outlet for nested routes - All child components load here -->
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
