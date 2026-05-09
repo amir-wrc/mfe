@@ -4,6 +4,11 @@ module.exports = withModuleFederationPlugin({
 
   name: 'todoApp',
 
+  filename: 'remoteEntry.js',
+
+  remotes: {
+    shell: "http://localhost:4200/remoteEntry.js",
+  },
   exposes: {
     './Module': './src/app/todo/todo.module.ts',
   },

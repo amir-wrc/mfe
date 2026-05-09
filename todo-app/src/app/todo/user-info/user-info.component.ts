@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'shell/AuthService';
 
 interface UserData {
   username: string;
@@ -19,7 +20,7 @@ interface UserData {
         </div>
         <div class="token-info">
           <span class="token-label">Token:</span>
-          <code class="token-value">{{ userData.token.substring(0, 20) }}...</code>
+          <code class="token-value">{{ token | slice:0:20 }}...</code>
         </div>
       </div>
     </div>
@@ -101,13 +102,15 @@ interface UserData {
 })
 export class UserInfoComponent implements OnInit {
   userData: UserData | null = null;
-
+  token: string | null = null;
+  constructor(private authService: AuthService) {}
   ngOnInit(): void {
     // Get user data from window object (shared by shell app)
     this.userData = (window as any).shellUserData || null;
-    
+    this.token = this.authService.getToken();
+
     // Log for debugging
-    console.log('Todo App - Received user data:', this.userData);
+    console.log('Todo App - Received user data:', this.userData,this.authService.getToken());
   }
 }
 
