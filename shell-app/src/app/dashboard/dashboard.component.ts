@@ -79,6 +79,16 @@ export class DashboardComponent implements OnInit {
     
     if (appName === 'todo') {
       this.currentMenuItems = [...this.commonMenuItems, ...this.todoMenuItems];
+//       const child = window.open('http://localhost:4201', '_blank');
+//       setTimeout(() => {
+//   child?.postMessage(
+//     {
+//       userData: (window as any).shellUserData,
+//       token: localStorage.getItem('auth_token')
+//     },
+//     'http://localhost:4201'
+//   );
+// }, 1000);
       this.router.navigate(['/dashboard/todo']);
     } else if (appName === 'shopping') {
       this.currentMenuItems = [...this.commonMenuItems, ...this.shoppingMenuItems];

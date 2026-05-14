@@ -23,6 +23,7 @@ export class LoginComponent {
     if (this.authService.login(this.username, this.password)) {
       // Set user data in shared service for remote apps
       this.sharedDataService.setUserData(this.username);
+      localStorage.setItem('username', this.username);
       this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = 'Please enter valid credentials';

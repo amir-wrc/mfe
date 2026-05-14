@@ -106,11 +106,33 @@ export class UserInfoComponent implements OnInit {
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
     // Get user data from window object (shared by shell app)
-    this.userData = (window as any).shellUserData || null;
-    this.token = this.authService.getToken();
+   
+    
+// window.addEventListener('message', (event) => {
 
+//   if (event.origin !== 'http://localhost:4200') {
+//     return;
+//   }
+
+//   localStorage.setItem(
+//     'token',
+//     event.data.token
+//   );
+//   localStorage.setItem(
+//     'sharedData',
+//     JSON.stringify(event.data.userData)
+//   );
+//   this.userData = (window as any).shellUserData || event.data.userData || localStorage.getItem('sharedData') || null;
+//   console.log('Received user data from shell app:', this.userData);
+//   this.token = event.data.token || localStorage.getItem('token') || null;
+// });
+// this.userData = localStorage.getItem('sharedData') ? JSON.parse(localStorage.getItem('sharedData')!) : null;
+// this.token = localStorage.getItem('token') || null;
+
+    this.userData = (window as any).shellUserData || null;
+    this.token = this.authService.getToken() || null;
     // Log for debugging
-    console.log('Todo App - Received user data:', this.userData,this.authService.getToken());
+    console.log('Todo App - Received user data:', this.userData,this.authService.getToken(),localStorage.getItem('username'));
   }
 }
 
